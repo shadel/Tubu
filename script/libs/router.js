@@ -9,7 +9,7 @@ define([
   var AppRouter = Backbone.Router.extend({
     routes: {
       '': 'main',
-      'detail': 'detail',
+      '/projects': 'showProjects',
       '/users': 'showUsers'
     }
   });
@@ -21,7 +21,7 @@ define([
       console.log('main222');
     });
     
-    app_router.on('route:detail', function(){
+    app_router.on('route:showProjects', function(){
         console.log('showProjects');
       });
     
