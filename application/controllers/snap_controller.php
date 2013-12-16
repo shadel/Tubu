@@ -1,7 +1,6 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-include_once (dirname(__FILE__) . "/snap_controller.php");
+<?php 
 
-class Welcome extends Snap_Controller {
+class Snap_Controller extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,9 +17,28 @@ class Welcome extends Snap_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		$this->load->view('welcome_message');
+	
+	public function _remap($method, $args) {
+		// Call before action
+		if($this->is_snapshot()) {
+
+			call_user_func_array(array($this, $method), $args);
+			
+		} else {
+			
+			$this->show_user_view();
+		}
+	
+		// Call after action
+	}
+	
+	protected function is_snapshot() { 
+		$input = $this->input->get('_escaped_fragment_');
+	    return $input !== false;
+	}
+	
+	protected function show_user_view() { 
+		$this->load->view('backbone');
 	}
 }
 
