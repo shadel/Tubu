@@ -3,6 +3,7 @@ define([ 'jquery', 'underscore', 'backbone', 'config/config',
 		'text!/tmpl/home/view.html' ], function($, _, Backbone, Config,
 		template) {
 	var View = Backbone.View.extend({
+		template: _.template(template),
 		initialize : function(obj, app_router) {
 			this.app = app_router;
 			
@@ -14,13 +15,22 @@ define([ 'jquery', 'underscore', 'backbone', 'config/config',
 			}
 		},
 		render : function() {
-			this.$el.html(template);
+			this.$el.html(this.template());
+		},
+		
+		show: function() {
+			this.render();
+			this.$el.show();
+		},
+		
+		hide: function() {
+			this.$el.hide();
 		}
 	});
 
 	var initialize = function(obj, app_router) {
 		var view = new View(obj, app_router);
-		view.render();
+		return view;
 	};
 	return {
 		initialize : initialize
