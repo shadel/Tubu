@@ -5,13 +5,14 @@ define([
   'backbone',
   'config/config',
   'viewManager',
-  'detail/view'
+  'storydetail/view'
 ], function($, _, Backbone, Config, ViewManager, View){
   var initialize = function(app_router){
-    app_router.on('route:detail', function(){
+    app_router.on('route:storyDetail', function(id){
+    	console.log('route storyDetail');
     	ViewManager.show({
     		view: View,
-    		name: 'detail',
+    		name: 'storyDetail',
     		selector: 'mainContainer',
     		noReplace: true,
     		initialize: function(view, element){

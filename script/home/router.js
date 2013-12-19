@@ -7,8 +7,12 @@ define([
   'viewManager',
   'home/view'
 ], function($, _, Backbone, Config, ViewManager, View){
+	var Collection = Backbone.Collection.extend({});
+	
   var initialize = function(app_router){
+	  
     app_router.on('route:main', function(){
+    	var collection = new Collection();
     	
     	ViewManager.show({
     		view: View,
@@ -17,12 +21,21 @@ define([
     		noReplace: true,
     		initialize: function(view, element){
         		
+    			console.log(collection.toJSON());
         		return view.initialize({
-        			el: element
+        			el: element,
+        			collection: collection
         		}, app_router);
         	}
     	});
+    	collection.set([{
+    		id: 1,
+    		title: 'Pham Nhan Tu Tien',
+    		image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
+    		summary: 'Pham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu Tien'
+    	}]);
     });
+    
     
   };
   return {

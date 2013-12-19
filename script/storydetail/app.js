@@ -3,7 +3,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'detail/router', // Request router.js
+  'storydetail/router', // Request router.js
 ], function($, _, Backbone, Router){
   var initialize = function(appRouter){
 	  console.log('detail aaaaaaa');
