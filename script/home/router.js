@@ -33,6 +33,16 @@ define([
     		title: 'Pham Nhan Tu Tien',
     		image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
     		summary: 'Pham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu Tien'
+    	}, {
+    		id: 2,
+    		title: 'Pham Nhan Tu Tien',
+    		image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
+    		summary: 'Pham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu Tien'
+    	}, {
+    		id: 3,
+    		title: 'Pham Nhan Tu Tien',
+    		image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
+    		summary: 'Pham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu Tien'
     	}]);
     });
     

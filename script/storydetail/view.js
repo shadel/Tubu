@@ -11,7 +11,7 @@ define([ 'jquery', 'underscore', 'backbone', 'config/config',
 		
 		events: {
 			'click': function(){
-				this.app.navigate('', {trigger: true});
+				// this.app.navigate('', {trigger: true});
 			}
 		},
 		render : function() {
