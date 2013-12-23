@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 include_once (dirname(__FILE__) . "/snap_controller.php");
 
-class Welcome extends Snap_Controller {
+class Story extends Snap_Controller {
 
 	/**
 	 * Index Page for this controller.

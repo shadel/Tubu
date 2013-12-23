@@ -1,0 +1,301 @@
+body {
+	font-size: 12px;
+	font-family: 'Roboto Condensed', Georgia, sans-serif;
+	color: #000;
+	line-height: 1.5;
+	padding: 0px;
+	margin: 0px;
+	background-color: #EDF9ED !important;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+*:focus {
+	outline: none;
+}
+
+ul {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.hide {
+	display: none;
+}
+
+.mainArea .ct-main .noidung {
+	min-height: 500px;
+}
+
+.jp-playlist-item-remove {
+	display: none !important;
+}
+
+.scroll-pane {
+	width: 100%;
+	height: 400px;
+	overflow: auto;
+}
+
+.top-bar {
+	background: #2fb823;
+	margin: 0;
+	padding: 20px 0px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 2000;
+	position: relative;
+	color: #fff;
+}
+
+.top-ct {
+	position: absolute;
+	margin: auto;
+	left: 0px;
+	right: 0px;
+	width: 970px;
+	top: 5px;
+}
+
+.top-bar .logo {
+	color: #b348b3;
+	font-size: 13px;
+	text-transform: uppercase;
+	margin-right: 20px;
+	padding-top: 5px;
+}
+
+.top-bar .login {
+	
+}
+
+.top-bar .menu {
+	padding-top: 5px;
+}
+
+.top-bar ul li {
+	margin-left: 10px;
+	margin-right: 10px;
+	text-transform: uppercase;
+	font-size: 13px;
+}
+
+.btn {
+	border: 1px solid #e1e5e6;
+	border-radius: 3px;
+	text-transform: uppercase;
+	padding: 5px 0px;
+	text-align: center;
+	width: 100px;
+	color: #8e9295;
+	cursor: pointer;
+}
+
+.top-bar .login  .btn.facebook-btn,.top-bar .login  .btn.google-btn,.top-bar .login  .btn.yahoo-btn
+	{
+	margin-left: 5px;
+}
+
+.horizontal-only {
+	height: auto;
+	max-height: 200px;
+}
+
+.nav {
+	background: #fff;
+	height: 60px;
+	border-bottom: 1px solid #f3f3f3;
+	position: relative;
+}
+
+.container2 {
+	padding: 0px;
+	padding-top: 2px;
+	padding-bottom: 100px;
+}
+
+.story-item .hidden-xs .content {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-bottom: 1px solid #D1E2D1;
+	border-right: 1px solid #D1E2D1;
+	border-top: 1px solid #E5F3CB;
+	margin-top: 12px;
+	overflow: hidden;
+	padding: 15px;
+}
+
+.story-item .visible-xs .content {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-bottom: 1px solid #D1E2D1;
+	overflow: hidden;
+	padding: 10px;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.story-item h2 {
+	overflow: hidden;
+	padding: 6px 0 4px;
+}
+
+.story-item h2 a {
+	color: #FF6600;
+	font-size: 14px;
+}
+
+.story-item p {
+	color: #838383;
+	height: 130px;
+	overflow: hidden;
+}
+
+.xq {
+	border-top: 1px dashed #CCCCCC;
+	margin-top: 5px;
+	padding-top: 12px;
+}
+
+.xq dt {
+	border: 1px solid #D1E2D1;
+	float: left;
+	height: 50px;
+	margin-right: 10px;
+	margin-top: 2px;
+	overflow: hidden;
+	padding: 3px;
+	width: 50px;
+}
+
+.xq dt img {
+	height: 50px;
+	width: 50px;
+}
+
+.xq dd {
+	color: #999999;
+	line-height: 21px;
+	margin-left: 0;
+}
+
+.xq dd span {
+	color: #009900;
+}
+
+.footer {
+	background: #FFFFFF;
+	padding: 12px 0 30px;
+	height: 100px;
+}
+
+.header {
+	background: #f2fcf3;
+	border-bottom: 1px solid #dbecd9;
+	height: 100px;
+}
+
+.category {
+	
+}
+
+.content .pic .thumbnail {
+	border: 0;
+	padding: 0px;
+	border-radius: 0;
+	margin: 0px;
+}
+
+.content .pic .thumbnail>img {
+	width: 100%;
+}
+
+.visible-xs .content .media>.pull-left {
+	height: 50px;
+	width: 50px;
+}
+
+.story-detail {
+	border-radius: 0;
+}
+
+.story-detail .thumbnail {
+	border-right: 1px solid #DBECD9;
+	margin-bottom: 0px;
+	border-radius: 0;
+	border-left: 0;
+	border-top: 0;
+	border-bottom: 0;
+	padding: 7px;
+}
+
+.story-detail .media-heading {
+	padding-top: 10px;
+	border-bottom: 1px solid #60B52B;
+	padding-bottom: 5px;
+}
+
+.panel-default {
+	border-color: #DBECD9;
+}
+
+#mainContainer-storyDetail .breadcrumb {
+	font-size: 15px;
+	margin-bottom: 0;
+	padding: 0;
+}
+
+#mainContainer-storyDetail .breadcrumb>li {
+	background: none repeat scroll 0 0 #60B52B;
+	margin-right: -4px;
+	padding: 10px 20px;
+}
+
+#mainContainer-storyDetail .breadcrumb>li a {
+	color: #fff;
+}
+
+#mainContainer-storyDetail .breadcrumb>li:last-child {
+	background: transparent;
+}
+
+#mainContainer-storyDetail .breadcrumb>li.arrow-item {
+	padding: 0 !important;
+	background: transparent !important;
+	position: relative;
+	margin-top: -16px;
+}
+
+#mainContainer-storyDetail .breadcrumb>li:before {
+	content: "";
+	padding: 0px;
+}
+
+.arrow-right {
+	border-bottom: 21px solid rgba(0, 0, 0, 0);
+	border-top: 22px solid rgba(0, 0, 0, 0);
+	height: 0;
+	width: 0;
+	border-left: 23px solid #60B52B;
+	position: relative;
+	top: 16px;
+}
+
+.glyphicon-send:before {
+	color: #DF624E;
+}
