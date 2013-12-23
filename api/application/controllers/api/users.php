@@ -5,7 +5,7 @@ require APPPATH.'/libraries/REST_Controller.php';
 class Users extends REST_Controller
 {
     
-    public function __construct() {
+    public function __construct() { 
         parent::__construct ();
         $this->load->library ('session');
 $this->load->library('encrypt');
@@ -78,7 +78,7 @@ $userId = $this->facebook->getUser();
 
 
     
-    function login() {
+    function login_post() {
         $user = new User();
     
         $user->username = $this->input->post('username');
