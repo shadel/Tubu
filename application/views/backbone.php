@@ -16,23 +16,7 @@
 </head>
 <body>
 
-	<div class="top-bar hide ">
-		<div class="top-ct clearfix">
-			<div class="logo hide left">LOGO</div>
-			<div class="menu left">
-				<ul class="clearfix">
-					<li class="left">Truyện</li>
-					<li class="left">Radio</li>
-					<li class="left">Video</li>
-				</ul>
-			</div>
-			<div class="login right hide clearfix">
-				<div class="btn facebook-btn left">Đăng Nhập</div>
-				<div class="btn google-btn left">Đăng ký</div>
-
-			</div>
-		</div>
-	</div>
+	<div id="topbar" class="top-bar"></div>
 	<div class="header"></div>
 	<div class="nav hide"></div>
 	<div id="mainContainer" class="container">
