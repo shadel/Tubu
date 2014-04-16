@@ -1,25 +1,28 @@
 // Filename: router.js
-define([ 'jquery', 'underscore', 'backbone', 'config/config', 'home/item',
-		'text!/tmpl/home/view.html' ], function($, _, Backbone, Config, Item,
+define([ 'jquery', 'underscore', 'backbone', 'config/config',
+		'text!/tmpl/storylist/item.html' ], function($, _, Backbone, Config, 
 		template) {
 	
 	var View = Backbone.View.extend({
-		className: 'row',
+		className: 'story-item list-group-item',
+		tagName: 'li',
 		template: _.template(template),
 		initialize : function(obj, app_router) {
 			this.app = app_router;
-			this.collection.on('add', this.appendTo, this);
+			this.model.on('change', this.render, this);
 		},
 		
+		events: {
+			'click a': function(event){
+				event.preventDefault();
+				
+				var url = $(event.currentTarget).attr('href');
+				this.app.navigate(url, {trigger: true});
+			},
+		},
 		render : function() {
-			console.log('render');
-			this.$el.html(this.template());
-			this.collection.each(this.appendTo, this);
+			this.$el.html(this.template(this.model.attributes));
 			return this;
-		},
-		
-		appendTo: function(model, index) {
-//			this.$('.row').append((Item.initialize({model: model}, this.app)).render().$el);
 		},
 		
 		show: function() {

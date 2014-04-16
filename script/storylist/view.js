@@ -1,6 +1,6 @@
 // Filename: router.js
-define([ 'jquery', 'underscore', 'backbone', 'config/config', 'home/item',
-		'text!/tmpl/home/view.html' ], function($, _, Backbone, Config, Item,
+define([ 'jquery', 'underscore', 'backbone', 'config/config', 'storylist/item',
+		'text!/tmpl/storylist/view.html' ], function($, _, Backbone, Config, Item,
 		template) {
 	
 	var View = Backbone.View.extend({
@@ -19,7 +19,7 @@ define([ 'jquery', 'underscore', 'backbone', 'config/config', 'home/item',
 		},
 		
 		appendTo: function(model, index) {
-//			this.$('.row').append((Item.initialize({model: model}, this.app)).render().$el);
+			this.$('#story_list ul').append((Item.initialize({model: model}, this.app)).render().$el);
 		},
 		
 		show: function() {

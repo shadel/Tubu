@@ -1,25 +1,21 @@
 // Filename: router.js
-define([ 'jquery', 'underscore', 'backbone', 'config/config', 'home/item',
-		'text!/tmpl/home/view.html' ], function($, _, Backbone, Config, Item,
+define([ 'jquery', 'underscore', 'backbone', 'config/config',
+		'text!/tmpl/profile/view.html' ], function($, _, Backbone, Config,
 		template) {
-	
 	var View = Backbone.View.extend({
-		className: 'row',
 		template: _.template(template),
 		initialize : function(obj, app_router) {
 			this.app = app_router;
-			this.collection.on('add', this.appendTo, this);
+			
 		},
 		
+		events: {
+			'click': function(){
+				// this.app.navigate('', {trigger: true});
+			}
+		},
 		render : function() {
-			console.log('render');
 			this.$el.html(this.template());
-			this.collection.each(this.appendTo, this);
-			return this;
-		},
-		
-		appendTo: function(model, index) {
-//			this.$('.row').append((Item.initialize({model: model}, this.app)).render().$el);
 		},
 		
 		show: function() {

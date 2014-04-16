@@ -2,7 +2,10 @@
 define([
   'underscore',
   'home/app',
-  'storydetail/app'
+  'storylist/app',
+  'storydetail/app',
+  'profile/app',
+  'chapter/app'
 ], function(homeApp){
 	var appList = Array.prototype.slice.call(arguments, 0);
 	appList.shift();

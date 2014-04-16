@@ -97,17 +97,6 @@ ul {
 	font-size: 13px;
 }
 
-.btn {
-	border: 1px solid #e1e5e6;
-	border-radius: 3px;
-	text-transform: uppercase;
-	padding: 5px 0px;
-	text-align: center;
-	width: 100px;
-	color: #8e9295;
-	cursor: pointer;
-}
-
 .top-bar .login  .btn.facebook-btn,.top-bar .login  .btn.google-btn,.top-bar .login  .btn.yahoo-btn
 	{
 	margin-left: 5px;
@@ -318,4 +307,25 @@ ul {
 
 .story-chapter-list .list-group .list-group-item {
 	border-color: #D1E2D1;
+}
+
+#ft_suggest_box {
+    border-radius: 0;
+    margin-top: 20px;
+}
+
+#ft_suggest_box form {
+	padding: 0px 15px;
+}
+
+#suggest-btns {
+	padding-top: 10px;
+}
+
+#mainContainer-storyList {
+    padding-top: 15px;
+}
+
+#story_list li .thumbnail {
+    width: 50px;
 }

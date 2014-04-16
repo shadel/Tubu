@@ -10,7 +10,9 @@ define([
     routes: {
       '': 'main',
       'story/:id': 'storyDetail',
-      '/users': 'showUsers'
+      'storylist/:key': 'storyList',
+      'profile/:id': 'showProfile',
+      'chapter/:id': 'showChapter'
     }
   });
 
