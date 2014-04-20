@@ -25,34 +25,22 @@ class Stories extends REST_Controller {
 		$this->ci = & get_instance ();
 		
 		$this->load->model ( 'story' );
-		$this->load->model ( 'story_cover' );
+		$this->load->model ( 'resource' );
 	}
 	function story_get() {
 		if (! $this->get ( 'id' )) {
 			$this->response ( NULL, 400 );
 		}
 		
-		$story = $this->story->getById ( $this->get ( 'id' ) );
-		$story_covers = $this->story_cover->getByStoryId ( $this->get ( 'id' ) );
+ 		$resource = new Resource( $this->get ( 'id' ));
+		$story = $resource->story->get();
 		
-		$covers = array ();
+// 		$story = $resource->story->get(NULL, NULL, TRUE);
+		$story->covers = $story->storyCover->get();
 		
-		foreach ( $story_covers as $story_cover ) {
-			
-			array_push ( $covers, array (
-					'img' => $story_cover->image_cover,
-					'introductory' => $story_cover->introductory,
-					'name' => $story_cover->name 
-			) );
-		}
-		
-		$story = array (
-				'id' => $story->resource_id,
-				'title' => $story->name,
-				'covers' => $covers 
-		);
+// 		$story = $this->story->getById ( $this->get ( 'id' ) );
 		if ($story) {
-			$this->response ( $story, 200 ); // 200 being the HTTP response code
+			$this->response ( $story->exportSingle(), 200 ); // 200 being the HTTP response code
 		} 
 
 		else {
@@ -81,32 +69,14 @@ class Stories extends REST_Controller {
 		
 		$this->response ( $message, 200 ); // 200 being the HTTP response code
 	}
-	function stories_get() {
-// 		if (! $this->get ( 'id' )) {
-// 			$this->response ( NULL, 400 );
-// 		}
+	function list_get() {
+//  		if (! $this->get ( 'key' )) {
+//  			$this->response ( NULL, 400 );
+//  		}
 		
-		$story = $this->story->getById ();
-		$story_covers = $this->story_cover->getByStoryId ( $this->get ( 'id' ) );
-		
-		$covers = array ();
-		
-		foreach ( $story_covers as $story_cover ) {
-			
-			array_push ( $covers, array (
-					'img' => $story_cover->image_cover,
-					'introductory' => $story_cover->introductory,
-					'name' => $story_cover->name 
-			) );
-		}
-		
-		$story = array (
-				'id' => $story->resource_id,
-				'title' => $story->name,
-				'covers' => $covers 
-		);
-		if ($story) {
-			$this->response ( $story, 200 ); // 200 being the HTTP response code
+		$stories = $this->story->getAll ();
+		if ($stories) {
+			$this->response ( $stories->exportList($stories), 200 ); // 200 being the HTTP response code
 		} 
 
 		else {

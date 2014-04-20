@@ -7,7 +7,42 @@ define([
   'viewManager',
   'storylist/view'
 ], function($, _, Backbone, Config, ViewManager, View){
-	var Collection = Backbone.Collection.extend({});
+  
+  var Model = Backbone.Model.extend({
+    constructor: function(dataObj) {
+      arguments[0] = this.convertDataFromServer(dataObj);
+      Backbone.Model.apply(this, arguments);
+    },
+    
+    convertDataFromServer: function(dataObj) {
+      var modelDefault = {
+        id: '',
+        title: '',
+        image: '',
+        summary: '',
+        coverName: ''
+      };
+      
+      var model = _.extend(modelDefault, {
+        id: dataObj.id,
+        title: dataObj.title
+      });
+      
+      if (dataObj.covers) {
+        var cover = dataObj.covers[0];
+        model.image = cover.img;
+        model.sumary = cover.introductory;
+        model.coverName = cover.name; 
+        model.covers = dataObj.covers;
+     }
+      
+      return model;
+    }
+  });
+	var Collection = Backbone.Collection.extend({
+	  url: '/api/api/stories/list',
+	  model: Model
+	});
 	
   var initialize = function(app_router){
 	  
@@ -28,22 +63,7 @@ define([
         		}, app_router);
         	}
     	});
-    	collection.set([{
-    		id: 1,
-    		title: 'Pham Nhan Tu Tien',
-    		image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
-    		summary: 'Pham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu Tien'
-    	}, {
-    		id: 2,
-    		title: 'Pham Nhan Tu Tien',
-    		image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
-    		summary: 'Pham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu Tien'
-    	}, {
-    		id: 3,
-    		title: 'Pham Nhan Tu Tien',
-    		image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
-    		summary: 'Pham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu Tien'
-    	}]);
+    	collection.fetch();
     });
     
     
