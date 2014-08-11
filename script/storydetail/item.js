@@ -1,10 +1,11 @@
 // Filename: router.js
 define([ 'jquery', 'underscore', 'backbone', 'config/config',
-		'text!/tmpl/home/item.html' ], function($, _, Backbone, Config, 
+		'text!/tmpl/storydetail/item.html' ], function($, _, Backbone, Config, 
 		template) {
 	
 	var View = Backbone.View.extend({
-		className: 'story-item col-md-3 col-sm-4 col-xs-12',
+		className: 'list-group-item clearfix',
+		tagName: 'li',
 		template: _.template(template),
 		initialize : function(obj, app_router) {
 			this.app = app_router;

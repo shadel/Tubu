@@ -12,17 +12,13 @@ define([
       'story/:id': 'storyDetail',
       'storylist/:key': 'storyList',
       'profile/:id': 'showProfile',
-      'chapter/:id': 'showChapter'
+      'chapter/:id': 'showChapter',
+      'author/:id': 'showAuthor'
     }
   });
 
   var initialize = function(){
-	  console.log('aaaaaa');
     var app_router = new AppRouter;
-    
-    app_router.on('route:storyDetail', function(){
-        console.log('showProjects');
-      });
     
     Factory.initialize(app_router);
     

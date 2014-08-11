@@ -1,10 +1,9 @@
 require.config({
   baseUrl: "/script/",
   paths: {
-    jquery: 'libs/jquery.min',
+    jquery: 'libs/jquery',
     underscore: 'libs/underscore',
-    backbone: 'libs/backbone',
-    bootstrap: 'libs/bootstrap'
+    backbone: 'libs/backbone'
   },
   shim: {
     underscore: {
@@ -21,8 +20,7 @@ require.config({
 });
 
 require([
-         'app',
-         'bootstrap'
+         'app'
        ], function(App) {
       
 	 App.initialize();

@@ -2,11 +2,13 @@
 define([ 'jquery', 'underscore', 'backbone', 'config/config',
 		'text!/tmpl/chapter/view.html' ], function($, _, Backbone, Config,
 		template) {
+  
 	var View = Backbone.View.extend({
+	    id: 'content',
 		template: _.template(template),
 		initialize : function(obj, app_router) {
 			this.app = app_router;
-			
+			this.model.on('change', this.render, this);
 		},
 		
 		events: {
@@ -15,7 +17,13 @@ define([ 'jquery', 'underscore', 'backbone', 'config/config',
 			}
 		},
 		render : function() {
-			this.$el.html(this.template());
+		  var values = {
+		      body: 'Empty'
+		  };
+		  
+			this.$el.html(this.template(
+			    _.extend(values, this.model.toJSON())));
+			return this;
 		},
 		
 		show: function() {

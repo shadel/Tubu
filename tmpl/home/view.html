@@ -1,65 +1,175 @@
-<div class="row">
-	<div id="ft_suggest_box" class="panel panel-primary clearfix">
-		<div class="col-md-8">
-			<form class="form-horizontal" role="form">
-				<div class="form-group has-success">
-					<label class="control-label" for="inputSuccess1"><h3>Ban
-							muon gi?</h3></label> <input type="text" class="form-control"
-						id="inputSuccess1">
-						<p class="help-block">Nhap noi dung ban muon doc.</p>
-				</div>
-			</form>
-		</div>
-		<div class="col-md-4">
-			<h3>Doc thu</h3>
-			<div class="media">
-				<a class="pull-left" href="#"> <img class="media-object"
-					src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIj48L3JlY3Q+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+" alt="...">
-				</a>
-				<div class="media-body">
-					<h4 class="media-heading">Media heading</h4>
-					...
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12">
-			<p id="suggest-btns" class="clearfix">
-				<button type="button" class="btn btn-primary">Cho toi xem
-					gi do moi</button>
-				<button type="button" class="btn btn-default right">Xem them</button>
-			</p>
-		</div>
-	</div>
-</div>
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img data-src="holder.js/300x200" alt="...">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img data-src="holder.js/300x200" alt="...">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img data-src="holder.js/300x200" alt="...">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-</div>
+<section class="hbox stretch">
+  <section>
+    <section class="vbox">
+      <section class="scrollable padder-lg" id="bjax-target">
+        <div class="row">
+          <div class="col-md-7">
+            <h3 class="font-thin"><%= lang.home.news %> <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+	          <span class="bar1 a1 bg-primary lter"></span>
+	          <span class="bar2 a2 bg-info lt"></span>
+	          <span class="bar3 a3 bg-success"></span>
+	          <span class="bar4 a4 bg-warning dk"></span>
+	          <span class="bar5 a5 bg-danger dker"></span>
+	        </span></h3>
+            <div id="newStory" class="row row-sm" ></div>
+          </div>
+          <div class="col-md-5">
+            <h3 class="font-thin"><%= lang.home.hot %></h3>
+            <div id="hotStory" class="list-group bg-white list-group-lg no-bg auto">                          
+            </div>
+          </div>
+        </div>
+        <div class="row m-t-lg m-b-lg">
+          <div class="col-sm-6">
+            <div class="bg-primary wrapper-md r">
+              <a href="#">
+                <span class="h4 m-b-xs block"><i class=" icon-user-follow i-lg"></i> Login or Create account</span>
+                <span class="text-muted">Save and share your playlist with your friends when you log in or create an account.</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="bg-black wrapper-md r">
+              <a href="#">
+                <span class="h4 m-b-xs block"><i class="icon-cloud-download i-lg"></i> Download our app</span>
+                <span class="text-muted">Get the apps for desktop and mobile to start listening music at anywhere and anytime.</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </section>
+  <!-- side content -->
+  <aside class="aside-md bg-light dk" id="sidebar">
+    <section class="vbox animated fadeInRight">
+      <section class="scrollable hover">
+        <h4 class="font-thin m-l-md m-t">Connected</h4>
+        <ul class="list-group no-bg no-borders auto m-t-n-xxs">
+          <li class="list-group-item">
+            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+              <img src="images/a1.png" alt="..." class="img-circle">
+              <i class="on b-light right sm"></i>
+            </span>
+            <div class="clear">
+              <div><a href="#">Chris Fox</a></div>
+              <small class="text-muted">New York</small>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+              <img src="images/a2.png" alt="...">
+              <i class="on b-light right sm"></i>
+            </span>
+            <div class="clear">
+              <div><a href="#">Amanda Conlan</a></div>
+              <small class="text-muted">France</small>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+              <img src="images/a3.png" alt="...">
+              <i class="busy b-light right sm"></i>
+            </span>
+            <div class="clear">
+              <div><a href="#">Dan Doorack</a></div>
+              <small class="text-muted">Hamburg</small>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+              <img src="images/a4.png" alt="...">
+              <i class="away b-light right sm"></i>
+            </span>
+            <div class="clear">
+              <div><a href="#">Lauren Taylor</a></div>
+              <small class="text-muted">London</small>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+              <img src="images/a5.png" alt="..." class="img-circle">
+              <i class="on b-light right sm"></i>
+            </span>
+            <div class="clear">
+              <div><a href="#">Chris Fox</a></div>
+              <small class="text-muted">Milan</small>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+              <img src="images/a6.png" alt="...">
+              <i class="on b-light right sm"></i>
+            </span>
+            <div class="clear">
+              <div><a href="#">Amanda Conlan</a></div>
+              <small class="text-muted">Copenhagen</small>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+              <img src="images/a7.png" alt="...">
+              <i class="busy b-light right sm"></i>
+            </span>
+            <div class="clear">
+              <div><a href="#">Dan Doorack</a></div>
+              <small class="text-muted">Barcelona</small>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+              <img src="images/a8.png" alt="...">
+              <i class="away b-light right sm"></i>
+            </span>
+            <div class="clear">
+              <div><a href="#">Lauren Taylor</a></div>
+              <small class="text-muted">Tokyo</small>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+              <img src="images/a9.png" alt="..." class="img-circle">
+              <i class="on b-light right sm"></i>
+            </span>
+            <div class="clear">
+              <div><a href="#">Chris Fox</a></div>
+              <small class="text-muted">UK</small>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+              <img src="images/a1.png" alt="...">
+              <i class="on b-light right sm"></i>
+            </span>
+            <div class="clear">
+              <div><a href="#">Amanda Conlan</a></div>
+              <small class="text-muted">Africa</small>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+              <img src="images/a2.png" alt="...">
+              <i class="busy b-light right sm"></i>
+            </span>
+            <div class="clear">
+              <div><a href="#">Dan Doorack</a></div>
+              <small class="text-muted">Paris</small>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm">
+              <img src="images/a3.png" alt="...">
+              <i class="away b-light right sm"></i>
+            </span>
+            <div class="clear">
+              <div><a href="#">Lauren Taylor</a></div>
+              <small class="text-muted">Brussels</small>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </section>              
+  </aside>
+  <!-- / side content -->
+</section>
+<a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>

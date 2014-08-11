@@ -23,8 +23,24 @@ define([
 		
 		viewList[options.selector] = viewList[options.selector] || {};
 		viewList[options.selector][name] = options.initialize(options.view, $('#' + selector));
+		
+		// Todo: only chrome
+		// after render force call render of window
+		if (_.isFunction(viewList[options.selector][name].render)) {
+		  var tempRender = viewList[options.selector][name].render;
+		  viewList[options.selector][name].render = function() {
+		    var result = tempRender.apply(viewList[options.selector][name], arguments);
+		    foreRender(result.$el);
+		    return result;
+		  }
+		}
 	}
-	
+
+	// Chrome can't render, must force call
+	var foreRender = _.once(function($el) {
+	  $el.css({'position': 'absolute'});
+      setTimeout(function(){$el.css({'position': ''})}, 100);
+	});
   return {
 	  viewList: {},
     show: function(options) {
@@ -39,15 +55,17 @@ define([
 		if(options.name) {
     		name = options.name;
     	}
-    	
+    	var resultView = null;
     	_.each(this.viewList[selector], function(view, key) {
     		if(key != name ) {
     			view.hide();
     		} else {
     			view.show();
+    			resultView = view;
     		}
     	});
     	
+    	return resultView;
     }
   };
 });

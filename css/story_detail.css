@@ -1,0 +1,74 @@
+
+#mainContainer-storyDetail #leftSidebar {
+	padding-right: 0px;
+}
+
+#mainContainer-storyDetail #mainStoryInfo {
+	padding-left: 0px;
+}
+
+#storyCover.pull-left {
+	padding: 10px;
+	margin-right: 0px;
+}
+
+.story-detail .media-body {
+	padding: 10px;
+}
+
+/* .story-detail .media-heading {
+	padding-top: 10px;
+	border-bottom: 1px solid #60B52B;
+	padding-bottom: 5px;
+} */
+
+.story-detail .summary {
+    border: 1px solid #60B52B;
+    padding: 10px;
+}
+
+.story-detail .feature {
+    margin-bottom: 5px;
+}
+
+.story-detail .feature li {
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+
+.story-detail .feature .rank {
+    font-weight: bold;
+}
+
+.story-detail .feature .vote-number {
+    color: #808080;
+    font-size: 9px;
+    padding-left: 3px;
+}
+
+.story-detail .feature .status {
+    font-weight: bold;
+}
+
+.story-detail .feature .status.final {
+    color: #008000;
+}
+
+.story-detail .infomation table td:first-child {
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.summary-header {
+    margin-top: 10px;
+}
+
+.summary-header.clearfix > div {
+    background: none repeat scroll 0 0 #60B52B;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    float: left;
+    padding: 5px;
+}

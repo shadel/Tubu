@@ -1,26 +1,33 @@
 // Filename: router.js
-define([ 'jquery', 'underscore', 'backbone', 'config/config', 'home/item',
-		'text!/tmpl/home/view.html' ], function($, _, Backbone, Config, Item,
+define([ 'jquery', 'underscore', 'backbone', 'config/config', 'home/newitem', 'home/hotitem',
+		'text!/tmpl/home/view.html' ], function($, _, Backbone, Config, NewItem, HotItem,
 		template) {
 	
 	var View = Backbone.View.extend({
-		className: 'row',
+	    id: 'content',
 		template: _.template(template),
 		initialize : function(obj, app_router) {
+		    this.newCollection = obj.newCollection;
+		    this.hotCollection = obj.hotCollection;
 			this.app = app_router;
-			this.collection.on('add', this.appendTo, this);
+			this.newCollection.on('add', this.appendToNew, this);
+			this.hotCollection.on('add', this.appendToHot, this);
 		},
 		
 		render : function() {
-			console.log('render');
-			this.$el.html(this.template());
-			this.collection.each(this.appendTo, this);
+			this.$el.html(this.template(Config));
+			this.newCollection.each(this.appendToNew, this);
+			this.hotCollection.each(this.appendToHot, this);
 			return this;
 		},
 		
-		appendTo: function(model, index) {
-//			this.$('.row').append((Item.initialize({model: model}, this.app)).render().$el);
+		appendToNew: function(model, index) {
+			this.$('#newStory').append((NewItem.initialize({model: model}, this.app)).render().$el);
 		},
+		
+		appendToHot: function(model, index) {
+          this.$('#hotStory').append((HotItem.initialize({model: model}, this.app)).render().$el);
+        },
 		
 		show: function() {
 			this.render();

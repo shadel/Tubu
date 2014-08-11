@@ -12,38 +12,71 @@ define([
   var initialize = function(app_router){
 	  
     app_router.on('route:main', function(){
-    	var collection = new Collection();
+    	var newCollection = new Collection();
+    	var hotCollection = new Collection();
     	
     	ViewManager.show({
     		view: View,
     		name: 'home',
-    		selector: 'mainContainer',
-    		noReplace: true,
+    		selector: 'content',
     		initialize: function(view, element){
         		
-    			console.log(collection.toJSON());
         		return view.initialize({
         			el: element,
-        			collection: collection
+        			newCollection: newCollection,
+        			hotCollection: newCollection
         		}, app_router);
         	}
     	});
-    	collection.set([{
+    	newCollection.set([{
     		id: 1,
     		title: 'Pham Nhan Tu Tien',
     		image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
-    		summary: 'Pham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu Tien'
+    		author: 'Vong Ngu',
+    		rank: 1
     	}, {
     		id: 2,
     		title: 'Pham Nhan Tu Tien',
     		image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
-    		summary: 'Pham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu Tien'
+    		author: 'Vong Ngu',
+            rank: 2
     	}, {
     		id: 3,
     		title: 'Pham Nhan Tu Tien',
     		image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
-    		summary: 'Pham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu TienPham Nhan Tu Tien'
-    	}]);
+    		author: 'Vong Ngu',
+            rank: 3
+    	}, {
+          id: 4,
+          title: 'Pham Nhan Tu Tien',
+          image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
+          author: 'Vong Ngu',
+          rank: 4
+      }, {
+        id: 5,
+        title: 'Pham Nhan Tu Tien',
+        image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
+        author: 'Vong Ngu',
+        rank: 5
+    }, {
+      id: 6,
+      title: 'Pham Nhan Tu Tien',
+      image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
+      author: 'Vong Ngu',
+      rank: 6
+  }, {
+    id: 7,
+    title: 'Pham Nhan Tu Tien',
+    image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
+    author: 'Vong Ngu',
+    rank: 7
+}, {
+  id: 8,
+  title: 'Pham Nhan Tu Tien',
+  image: 'http://fm2.xs8xs8.cn/data/cover/84/204744.jpg',
+  author: 'Vong Ngu',
+  rank: 8
+}]);
     });
     
     
