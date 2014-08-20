@@ -14,5 +14,10 @@ define([], function() {
           status: 'Trạng thái',
           statusValue: ['Đang tiến hành', 'Xong', 'Đã dừng']
         },
+        profile: {
+          storyFollow: 'Đang theo dõi',
+          storyOwner: 'Đang viết',
+          addNewStory: 'Thêm truyện'
+        }
 	};
 });

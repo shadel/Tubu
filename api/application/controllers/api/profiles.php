@@ -19,52 +19,30 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 // This can be removed if you use __autoload() in config.php OR use Modular
 // Extensions
 require APPPATH . '/libraries/REST_Controller.php';
-class Stories extends REST_Controller {
+class Profiles extends REST_Controller {
 	function __construct() {
 		parent::__construct ();
 		$this->ci = & get_instance ();
-		
-		$this->load->model ( 'story' );
 	}
-	function story_get() {
-		if (! $this->get ( 'id' )) {
-			$this->response ( NULL, 400 );
-		}
-		
- 		$resource = new Resource( $this->get ( 'id' ));
-		$story = $resource->story->get();
-		
-// 		$story = $resource->story->get(NULL, NULL, TRUE);
-		$story->covers = $story->storyCover->get();
-		
-// 		$story = $this->story->getById ( $this->get ( 'id' ) );
-		if ($story) {
-			$this->response ( $story->exportSingle(), 200 ); // 200 being the HTTP response code
-		} 
 
-		else {
-			$this->response ( array (
-					'error' => 'User could not be found' 
-			), 404 );
-		}
-	}
-	
-	function owner_get() {
+	function profile_get() {
 		$userId = $this->get ( 'id' );
 		if (! $userId) {
 			$this->response ( NULL, 400 );
 		}
-	
+		
 		// Todo: get username in session
 		$currentUser = $this->get ( 'id' );
-	
+		
 		if ($userId == $currentUser) {
-			$storyModel = new StoryModel();
-			$stories = $storyModel->get_by_owner($this->get ( 'id' ));
+	 		$profileModel = new ProfileModel();
+			$profile = $profileModel->get_by_userId($this->get ( 'id' ));
 			$data = array();
-				
-			if ($stories) {
-				$data = $storyModel->export_list($stories);
+			
+			if ($profile) {
+				$data['profile'] = $profile->export();
+				$data['profile']['isAuthor'] = true;
+				$data['profile']['isCurrentUser'] = true;
 				$this->response ( $data, 200 ); // 200 being the HTTP response code
 			} else {
 				$this->response ( array (
@@ -73,7 +51,7 @@ class Stories extends REST_Controller {
 			}
 		} else {
 			$this->response ( array (
-					'error' => 'error.accessDenied'
+					'error' => 'error.accessDenied' 
 			), 404 );
 		}
 	}
@@ -99,13 +77,16 @@ class Stories extends REST_Controller {
 		$this->response ( $message, 200 ); // 200 being the HTTP response code
 	}
 	function list_get() {
-//  		if (! $this->get ( 'key' )) {
-//  			$this->response ( NULL, 400 );
-//  		}
+ 		if (! $this->get ( 'key' )) {
+ 			$this->response ( NULL, 400 );
+ 		}
 		
-		$stories = $this->story->getAll ();
-		if ($stories) {
-			$this->response ( $stories->exportList($stories), 200 ); // 200 being the HTTP response code
+		$resource = new Resource( $this->get ( 'key' ));
+		$storyCover = $resource->storyCover->get();
+		$chapters = $storyCover->chapter->get();
+		
+		if ($chapters) {
+			$this->response ( $chapters->exportList($chapters), 200 ); // 200 being the HTTP response code
 		} 
 
 		else {

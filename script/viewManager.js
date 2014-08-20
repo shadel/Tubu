@@ -30,14 +30,14 @@ define([
 		  var tempRender = viewList[options.selector][name].render;
 		  viewList[options.selector][name].render = function() {
 		    var result = tempRender.apply(viewList[options.selector][name], arguments);
-		    foreRender(result.$el);
+		    forceRender(viewList[options.selector][name].$el);
 		    return result;
 		  }
 		}
 	}
 
 	// Chrome can't render, must force call
-	var foreRender = _.once(function($el) {
+	var forceRender = _.once(function($el) {
 	  $el.css({'position': 'absolute'});
       setTimeout(function(){$el.css({'position': ''})}, 100);
 	});
