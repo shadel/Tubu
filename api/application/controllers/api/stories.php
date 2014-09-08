@@ -26,25 +26,48 @@ class Stories extends REST_Controller {
 		
 		$this->load->model ( 'story' );
 	}
-	function story_get() {
+	function detail_get() {
 		if (! $this->get ( 'id' )) {
 			$this->response ( NULL, 400 );
 		}
 		
- 		$resource = new Resource( $this->get ( 'id' ));
-		$story = $resource->story->get();
+		// Todo: get username in session
+		$currentUser = 'test001';
 		
-// 		$story = $resource->story->get(NULL, NULL, TRUE);
-		$story->covers = $story->storyCover->get();
+		$storyModel = new StoryModel ();
+		$story = $storyModel->get_by_id ( $this->get ( 'id' ) );
+		$data = array ();
 		
-// 		$story = $this->story->getById ( $this->get ( 'id' ) );
 		if ($story) {
-			$this->response ( $story->exportSingle(), 200 ); // 200 being the HTTP response code
-		} 
-
-		else {
+			$data ['story'] = $story->export ();
+			$data ['story'] ['isAuthor'] = true;
+			$data ['story'] ['isOwner'] = $story->owner == $currentUser;
+			$this->response ( $data, 200 ); // 200 being the HTTP response code
+		} else {
 			$this->response ( array (
-					'error' => 'User could not be found' 
+					'error' => 'error.storyNotFound' 
+			), 404 );
+		}
+	}
+	
+	function chapter_get() {
+		if (! $this->get ( 'id' )) {
+			$this->response ( NULL, 400 );
+		}
+		
+		// Todo: get username in session
+		$currentUser = 'test001';
+		
+		$chapterModel = new ChapterModel ();
+		$chapters = $chapterModel->get_by_story_id( $this->get ( 'id' ) );
+		$data = array ();
+		
+		if ($chapters) {
+			$data = $chapterModel->export_list($chapters);
+			$this->response ( $data, 200 ); // 200 being the HTTP response code
+		} else {
+			$this->response ( array (
+					'error' => 'error.chapterNotFound'
 			), 404 );
 		}
 	}
@@ -54,30 +77,29 @@ class Stories extends REST_Controller {
 		if (! $userId) {
 			$this->response ( NULL, 400 );
 		}
-	
+		
 		// Todo: get username in session
 		$currentUser = $this->get ( 'id' );
-	
+		
 		if ($userId == $currentUser) {
-			$storyModel = new StoryModel();
-			$stories = $storyModel->get_by_owner($this->get ( 'id' ));
-			$data = array();
-				
+			$storyModel = new StoryModel ();
+			$stories = $storyModel->get_by_owner ( $this->get ( 'id' ) );
+			$data = array ();
+			
 			if ($stories) {
-				$data = $storyModel->export_list($stories);
+				$data = $storyModel->export_list ( $stories );
 				$this->response ( $data, 200 ); // 200 being the HTTP response code
 			} else {
 				$this->response ( array (
-						'error' => 'error.userNotFound'
+						'error' => 'error.userNotFound' 
 				), 404 );
 			}
 		} else {
 			$this->response ( array (
-					'error' => 'error.accessDenied'
+					'error' => 'error.accessDenied' 
 			), 404 );
 		}
 	}
-	
 	function story_post() {
 		// $this->some_model->updateUser( $this->get('id') );
 		$message = array (
@@ -99,13 +121,14 @@ class Stories extends REST_Controller {
 		$this->response ( $message, 200 ); // 200 being the HTTP response code
 	}
 	function list_get() {
-//  		if (! $this->get ( 'key' )) {
-//  			$this->response ( NULL, 400 );
-//  		}
-		
+		// if (! $this->get ( 'key' )) {
+		// $this->response ( NULL, 400 );
+		// }
 		$stories = $this->story->getAll ();
 		if ($stories) {
-			$this->response ( $stories->exportList($stories), 200 ); // 200 being the HTTP response code
+			$this->response ( $stories->exportList ( $stories ), 200 ); // 200 being
+			                                                         // the HTTP response
+			                                                         // code
 		} 
 
 		else {

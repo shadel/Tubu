@@ -6,7 +6,8 @@ define([
   'storydetail/app',
   'profile/app',
   'chapter/app',
-  'author/app'
+  'author/app',
+  'main/app'
 ], function(homeApp){
 	var appList = Array.prototype.slice.call(arguments, 0);
 	appList.shift();

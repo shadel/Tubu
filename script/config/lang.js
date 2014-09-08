@@ -2,7 +2,10 @@ define([], function() {
 	return {
 		home: {
 		  news: 'Truyện Mới',
-		  hot: 'Truyện Hay'
+		  hot: 'Truyện Hay',
+		  categories: "Thể Loại",
+		  authors: "Tác Giả",
+		  discover: "Khám Phá"
 		},
 		common: {
 		  by: 'Đăng bởi',
@@ -12,7 +15,9 @@ define([], function() {
 		},
 		story: {
           status: 'Trạng thái',
-          statusValue: ['Đang tiến hành', 'Xong', 'Đã dừng']
+          statusValue: ['Đang tiến hành', 'Xong', 'Đã dừng'],
+          chapterList: 'Danh sách Chương',
+          info: 'Thông tin'
         },
         profile: {
           storyFollow: 'Đang theo dõi',

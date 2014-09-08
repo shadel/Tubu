@@ -56,6 +56,27 @@ class Profiles extends REST_Controller {
 		}
 	}
 	
+	function current_get() {
+	
+		// Todo: get username in session
+		$currentUser = "test001";
+	
+		$profileModel = new ProfileModel();
+		$profile = $profileModel->get_by_userId($currentUser);
+		$data = array();
+			
+		if ($profile) {
+			$data['profile'] = $profile->export();
+			$data['profile']['isAuthor'] = true;
+			$data['profile']['isCurrentUser'] = true;
+			$this->response ( $data, 200 ); // 200 being the HTTP response code
+		} else {
+			$this->response ( array (
+					'error' => 'error.userNotFound'
+			), 404 );
+		}
+	}
+	
 	function story_post() {
 		// $this->some_model->updateUser( $this->get('id') );
 		$message = array (

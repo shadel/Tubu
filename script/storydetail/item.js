@@ -1,9 +1,9 @@
 // Filename: router.js
-define([ 'jquery', 'underscore', 'backbone', 'config/config',
-		'text!/tmpl/storydetail/item.html' ], function($, _, Backbone, Config, 
+define([ 'tubu',
+		'text!/tmpl/storydetail/item.html' ], function(Tubu, 
 		template) {
 	
-	var View = Backbone.View.extend({
+	var View = Tubu.view({
 		className: 'list-group-item clearfix',
 		tagName: 'li',
 		template: _.template(template),
@@ -13,33 +13,14 @@ define([ 'jquery', 'underscore', 'backbone', 'config/config',
 		},
 		
 		events: {
-			'click a': function(event){
-				event.preventDefault();
-				
-				var url = $(event.currentTarget).attr('href');
-				this.app.navigate(url, {trigger: true});
-			},
+			'click a': 'clickLink'
 		},
 		render : function() {
 			this.$el.html(this.template(this.model.attributes));
 			return this;
-		},
-		
-		show: function() {
-			this.render();
-			this.$el.show();
-		},
-		
-		hide: function() {
-			this.$el.hide();
 		}
+		
 	});
 
-	var initialize = function(obj, app_router) {
-		var view = new View(obj, app_router);
-		return view;
-	};
-	return {
-		initialize : initialize
-	};
+	return View;
 });
