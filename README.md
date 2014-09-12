@@ -1,4 +1,10 @@
 Tubu
 ================
 
-This is a marketpace of story
+Cấu trúc dữ liệu trả về:
+
+    {
+	  data: {},
+	  paging: {},
+	  error: {}
+	}
