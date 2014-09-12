@@ -18,7 +18,7 @@ define([ 'jquery', 'underscore', 'backbone', 'config/config',
 		},
 		render : function() {
 		  var values = {
-		      body: 'Empty'
+		      body: 'Test coi có empty không'
 		  };
 		  
 			this.$el.html(this.template(
