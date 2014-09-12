@@ -28,7 +28,7 @@ class Profiles extends REST_Controller {
 	function profile_get() {
 		$userId = $this->get ( 'id' );
 		if (! $userId) {
-			$this->response ( NULL, 400 );
+			return TubuError::notFound();
 		}
 		
 		// Todo: get username in session
@@ -43,16 +43,13 @@ class Profiles extends REST_Controller {
 				$data['profile'] = $profile->export();
 				$data['profile']['isAuthor'] = true;
 				$data['profile']['isCurrentUser'] = true;
-				$this->response ( $data, 200 ); // 200 being the HTTP response code
+				return new TubuResponse($data['profile']);
+// 				$this->response ( $data, 200 ); // 200 being the HTTP response code
 			} else {
-				$this->response ( array (
-						'error' => 'error.userNotFound'
-				), 404 );
+				return TubuError::notFound();
 			}
 		} else {
-			$this->response ( array (
-					'error' => 'error.accessDenied' 
-			), 404 );
+			return TubuError::accessDenied();
 		}
 	}
 	

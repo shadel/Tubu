@@ -29,7 +29,7 @@
     <script src="<?php echo base_url()?>theme/js/ie/excanvas.js"></script>
   <![endif]-->
 </head>
-<body class="">
+<body class="container">
 	<section class="vbox">
 		<header id="navigate"
 			class="bg-white-only header header-md navbar navbar-fixed-top-xs">

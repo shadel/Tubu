@@ -347,7 +347,10 @@ abstract class REST_Controller extends CI_Controller
 	 */
 	protected function _fire_method($method, $args)
 	{
-		call_user_func_array($method, $args);
+		$data = call_user_func_array($method, $args);
+		if (isset($data)) {
+			$this->response($data->getResponse(), $data->getHttpCode());
+		}
 	}
 
 	/**
