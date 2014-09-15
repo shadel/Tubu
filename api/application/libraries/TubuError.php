@@ -17,10 +17,11 @@ class TubuError {
 		if (is_null($obj)) {
 			return;
 		}
-		if (is_array ( $obj )) {
-			array_merge ( $this->_errors, $obj );
+		if (is_array ( $obj ) && isset($obj[0])) {
+			$this->_errors = array_merge ( $this->_errors, $obj );
 		} else {
 			array_push ( $this->_errors, $obj );
+			
 		}
 	}
 	public function addError($obj) {

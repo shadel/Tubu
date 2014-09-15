@@ -18,16 +18,22 @@ class TubuResponse {
 	 * init RestResponse
 	 */
 	public function __construct($object = NULL) {
-		if (is_null($object)) {
+		if (is_null ( $object )) {
 			return;
 		}
-		$class_name_obj = get_class ( $object );
-		if ($class_name_obj == "TubuError") {
-			$this->setError ( $object );
-		} else if ($class_name_obj == "TubuHttpCode") {
-			$this->setHttpCode ( $object );
-		} else if ($class_name_obj == "TubuPaging") {
-			$this->setPaging ( $object );
+		
+		if (is_object ( $object )) {
+			
+			$class_name_obj = get_class ( $object );
+			if ($class_name_obj == "TubuError") {
+				$this->setError ( $object );
+			} else if ($class_name_obj == "TubuHttpCode") {
+				$this->setHttpCode ( $object );
+			} else if ($class_name_obj == "TubuPaging") {
+				$this->setPaging ( $object );
+			} else {
+				$this->setData ( $object );
+			}
 		} else {
 			$this->setData ( $object );
 		}
@@ -47,6 +53,7 @@ class TubuResponse {
 	
 	/**
 	 * get html Code of action
+	 * 
 	 * @return number
 	 */
 	public function getHttpCode() {
@@ -62,6 +69,7 @@ class TubuResponse {
 	}
 	/**
 	 * get Respone of action
+	 * 
 	 * @return multitype:multitype: NULL
 	 */
 	public function getResponse() {
@@ -73,7 +81,6 @@ class TubuResponse {
 		if (! is_null ( $this->_paging )) {
 			$data ['paging'] = $this->_paging->getValue ();
 		}
-		
 		if (! is_null ( $this->_data )) {
 			if (is_array ( $this->_data )) {
 				if (isset ( $this->_data [0] )) {
@@ -83,7 +90,7 @@ class TubuResponse {
 						$data ['data'] = $this->_data;
 					}
 				} else {
-					$data ['data'] = array ();
+					$data ['data'] = $this->_data;
 				}
 			} else {
 				if (method_exists ( $this->_data, "export" )) {

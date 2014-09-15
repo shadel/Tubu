@@ -10,7 +10,7 @@
                             <img src="images/a0.png">
                           </a>
                           <div>
-                            <div class="h3 m-t-xs m-b-xs"><%= profile.name %></div>
+                            <div class="h3 m-t-xs m-b-xs"><%= name %></div>
                             <small class="text-muted"><i class="fa fa-map-marker"></i> London, UK</small>
                           </div>                
                         </div>
@@ -31,7 +31,7 @@
                           </div>
                         </div>
                         <div class="btn-group btn-group-justified m-b">
-                          <% if (!profile.isCurrentUser) { %>
+                          <% if (!isCurrentUser) { %>
                           <a class="btn btn-success btn-rounded" data-toggle="button">
                             <span class="text">
                               <i class="fa fa-eye"></i> Follow
@@ -41,7 +41,7 @@
                             </span>
                           </a>
                           <% } %>
-                          <% if (profile.isAuthor && profile.isCurrentUser) { %>
+                          <% if (isAuthor && isCurrentUser) { %>
                           <a id="addNewStory" class="btn btn-dark btn-rounded">
                             <i class="fa fa-comment-o"></i> <%= lang.profile.addNewStory %>
                           </a>
@@ -69,7 +69,7 @@
                     <header class="header bg-light lt">
                       <ul class="nav nav-tabs nav-white">
                         <li class="active"><a id="storyFollowTab" href="#storyFollow" data-toggle="tab"><%= lang.profile.storyFollow %></a></li>
-                        <% if (profile.isAuthor && profile.isCurrentUser) { %>
+                        <% if (isAuthor && isCurrentUser) { %>
                         <li class=""><a id="storyOwnerTab" href="#storyOwner" data-toggle="tab"><%= lang.profile.storyOwner %></a></li>
                         <% } %>
                       </ul>

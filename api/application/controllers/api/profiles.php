@@ -39,7 +39,7 @@ class Profiles extends REST_Controller {
 			$profile = $profileModel->get_by_userId($this->get ( 'id' ));
 			$data = array();
 			
-			if ($profile) {
+			if ($profile->id != null) {
 				$data['profile'] = $profile->export();
 				$data['profile']['isAuthor'] = true;
 				$data['profile']['isCurrentUser'] = true;
