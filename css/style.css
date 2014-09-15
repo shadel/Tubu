@@ -31,3 +31,7 @@ src: local('Source Sans Pro'), local('Source-Sans-Pro'), url(http://truyen.com/c
 	border-left: 1px solid #191F23 !important;
 	background-color: rgba(0, 0, 0, 0) !important;
 }
+
+<!-- #chapter-body {
+	box-shadow: 0 0 !important; -->
+}
