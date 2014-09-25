@@ -5,15 +5,20 @@ define([ 'tubu', 'profile/item', 'text!/tmpl/profile/view.html' ], function(
     template : _.template(template),
     initialize : function(obj, app_router) {
       this.ownerCollection = obj.ownerCollection;
+      this.followCollection = obj.followCollection;
       this.app = app_router;
       this.model.on('change', this.render, this);
       this.ownerCollection.on('add', this.addOwnerChapter, this);
       this.ownerCollection.on('reset', this.resetOwnerChapter, this);
 
+      this.followCollection.on('add', this.addfollowChapter, this);
+      this.followCollection.on('reset', this.resetfollowChapter, this);
+
     },
 
     events : {
-      'click #storyOwnerTab' : 'refreshStoryOwnerTab'
+      'click #storyOwnerTab' : 'refreshStoryOwnerTab',
+      'click #storyFollowTab' : 'refreshStoryFollowTab'
     },
     render : function() {
       var value = this.model.toJSON();
@@ -39,7 +44,15 @@ define([ 'tubu', 'profile/item', 'text!/tmpl/profile/view.html' ], function(
 
     refreshStoryOwnerTab : function() {
       this.ownerCollection.fetch();
-    }
+    },
+    
+    resetFollowChapter : function() {
+      this.$('#storyFollow ul').empty();
+    },
+
+    refreshStoryFollowTab : function() {
+      this.followCollection.fetch();
+    }    
 
   });
 

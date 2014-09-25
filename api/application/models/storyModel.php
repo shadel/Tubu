@@ -3,20 +3,8 @@ class StoryModel extends DataMapper {
 
 	var $table = "story";
 
-	function selectList($userId = null)
-	{
-		$storyModel = new StoryModel();
-		
-		if ($userId != null) {
-			$this->db->where('create_user', $userId);
-		}
-		
-		$story_list = $storyModel->get();
-		return $story_list;
-	}
-	
-	function selectListByCreater($userId) {
-		
+	function selectByFollow($userId) {
+		$sql = "SELECT story.* ";
 	}
 	
 	function delete($id)

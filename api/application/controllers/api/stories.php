@@ -49,7 +49,6 @@ class Stories extends REST_Controller {
 			), 404 );
 		}
 	}
-	
 	function chapter_get() {
 		if (! $this->get ( 'id' )) {
 			$this->response ( NULL, 400 );
@@ -59,47 +58,65 @@ class Stories extends REST_Controller {
 		$currentUser = 'test001';
 		
 		$chapterModel = new ChapterModel ();
-		$chapters = $chapterModel->get_by_story_id( $this->get ( 'id' ) );
+		$chapters = $chapterModel->get_by_story_id ( $this->get ( 'id' ) );
 		$data = array ();
 		
 		if ($chapters) {
-			$data = $chapterModel->export_list($chapters);
+			$data = $chapterModel->export_list ( $chapters );
 			$this->response ( $data, 200 ); // 200 being the HTTP response code
 		} else {
 			$this->response ( array (
-					'error' => 'error.chapterNotFound'
+					'error' => 'error.chapterNotFound' 
 			), 404 );
 		}
 	}
 	
+	/**
+	 * get story owner of user
+	 * @return TubuResponse
+	 */
 	function owner_get() {
 		$userId = $this->get ( 'id' );
 		if (! $userId) {
-			$this->response ( NULL, 400 );
+			return TubuError::notFound ();
 		}
 		
 		// Todo: get username in session
 		$currentUser = $this->get ( 'id' );
 		
-		if ($userId == $currentUser) {
-			$storyModel = new StoryModel ();
-			$stories = $storyModel->get_by_owner ( $this->get ( 'id' ) );
-			$data = array ();
-			
-			if ($stories) {
-				$data = $storyModel->export_list ( $stories );
-				$this->response ( $data, 200 ); // 200 being the HTTP response code
-			} else {
-				$this->response ( array (
-						'error' => 'error.userNotFound' 
-				), 404 );
-			}
-		} else {
-			$this->response ( array (
-					'error' => 'error.accessDenied' 
-			), 404 );
+		if ($userId != $currentUser) {
+			return TubuError::accessDenied ();
 		}
+		$storyModel = new StoryModel ();
+		$stories = $storyModel->get_by_owner ( $this->get ( 'id' ) );
+		
+		$data = $storyModel->export_list ( $stories );
+		return new TubuResponse ( $data );
 	}
+	
+	/**
+	 * get story following of user
+	 * @return TubuResponse
+	 */
+	function follow_get() {
+		$userId = $this->get ( 'id' );
+		if (! $userId) {
+			return TubuError::notFound ();
+		}
+	
+		// Todo: get username in session
+		$currentUser = $this->get ( 'id' );
+	
+		if ($userId != $currentUser) {
+			return TubuError::accessDenied ();
+		}
+		$storyModel = new StoryModel ();
+		$stories = $storyModel->get_by_owner ( $this->get ( 'id' ) );
+	
+		$data = $storyModel->export_list ( $stories );
+		return new TubuResponse ( $data );
+	}
+	
 	function story_post() {
 		// $this->some_model->updateUser( $this->get('id') );
 		$message = array (
@@ -126,9 +143,11 @@ class Stories extends REST_Controller {
 		// }
 		$stories = $this->story->getAll ();
 		if ($stories) {
-			$this->response ( $stories->exportList ( $stories ), 200 ); // 200 being
-			                                                         // the HTTP response
-			                                                         // code
+			$this->response ( $stories->exportList ( $stories ), 200 ); // 200
+				                                                            // being
+				                                                            // the HTTP
+				                                                            // response
+				                                                            // code
 		} 
 
 		else {
