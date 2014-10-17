@@ -1,0 +1,11 @@
+
+<a href="#" class="thumb-sm pull-left m-r-sm"> <img
+	src="<%= cover %>" class="">
+</a>
+<a href="#" class="clear"> <small class="readFlag pull-right"><% if
+		(followerStatus == '0') { %> <i class="fa fa-warning"></i> <%= lang.profile.follow.unRead %> <% } else {
+		%><%= lang.profile.follow.read %> <% } %> </small> <strong class="block"><%=
+		title %></strong> <small><a href="/chapter/<%= chapterId %>"><%=
+			lang.profile.follow.newChapter %> <%= chapterNumber %>: <%=
+			chapterTitle %></a></small>
+</a>

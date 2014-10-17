@@ -5,9 +5,19 @@ define([ 'tubu', 'profile/view' ], function(Tubu, View) {
     var Model = Tubu.model({
       urlRoot : '/api/api/profiles/profile/id/'
     });
+    
+    var ItemModel = Tubu.model({
+      urlReadFlag: '/api/api/stories/togglereadflag/id/',
+      toggleReadFlag: function() {
+        this.urlRoot = this.urlReadFlag;
+        this.fetch();
+      }
+        
+    });
 
     var Collection = Tubu.collection({
-      url : '/api/api/stories/{0}/id/{1}'
+      url : '/api/api/stories/{0}/id/{1}',
+      model: ItemModel
     });
 
     app_router.on('route:showProfile', function(id) {

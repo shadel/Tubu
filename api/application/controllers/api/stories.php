@@ -58,7 +58,7 @@ class Stories extends REST_Controller {
 		$currentUser = 'test001';
 		
 		$chapterModel = new ChapterModel ();
-		$chapters = $chapterModel->get_by_story_id ( $this->get ( 'id' ) );
+		$chapters = $chapterModel->get_by_storyId ( $this->get ( 'id' ) );
 		$data = array ();
 		
 		if ($chapters) {
@@ -99,22 +99,45 @@ class Stories extends REST_Controller {
 	 * @return TubuResponse
 	 */
 	function follow_get() {
-		$userId = $this->get ( 'id' );
-		if (! $userId) {
+		$userName = $this->get ( 'id' );
+		if (! $userName) {
 			return TubuError::notFound ();
 		}
 	
 		// Todo: get username in session
 		$currentUser = $this->get ( 'id' );
 	
-		if ($userId != $currentUser) {
+		if ($userName != $currentUser) {
 			return TubuError::accessDenied ();
 		}
+		$userId = 1;
 		$storyModel = new StoryModel ();
-		$stories = $storyModel->get_by_owner ( $this->get ( 'id' ) );
-	
+		$stories = $storyModel->selectByFollow ( $userId );
+		
 		$data = $storyModel->export_list ( $stories );
 		return new TubuResponse ( $data );
+	}
+	
+	function togglereadflag_get() {
+		$storyId = $this->get ( 'id' );
+
+		// Todo: get username in session
+		$userId = '1';
+		
+		$storyFollowerModel = new StoryFollowerModel();
+		$storyFollowerModel->where('storyId', $storyId);
+		$storyFollowerModel->where('userId', $userId);
+		$storyFollowerModel->get();
+		
+		$storyFollowerModel->where('storyId', $storyId);
+		$storyFollowerModel->where('userId', $userId);
+		$storyFollowerModel->update(array(
+				'status' => 1 - $storyFollowerModel->status));
+		
+		$storyModel = new StoryModel ();
+		$stories = $storyModel->selectByFollow ( $userId, $storyId );
+		
+		return new TubuResponse ( $stories->export() );
 	}
 	
 	function story_post() {

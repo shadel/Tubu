@@ -17,12 +17,18 @@ define([], function() {
           status: 'Trạng thái',
           statusValue: ['Đang tiến hành', 'Xong', 'Đã dừng'],
           chapterList: 'Danh sách Chương',
-          info: 'Thông tin'
+          info: 'Thông tin',
+          summary: 'Tóm tắt'
         },
         profile: {
           storyFollow: 'Đang theo dõi',
           storyOwner: 'Đang viết',
-          addNewStory: 'Thêm truyện'
+          addNewStory: 'Thêm truyện',
+          follow: {
+            unRead: 'Chưa đọc',
+            read: 'Đã đọc',
+            newChapter: 'Chương mới'
+          }
         }
 	};
 });

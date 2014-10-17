@@ -1,6 +1,5 @@
 // Filename: router.js
-define([ 'tubu', 'storydetail/item', 'text!/tmpl/storydetail/view.html',
-    'util/HTML.format' ], function(Tubu, Item, template, Format) {
+define([ 'tubu', 'storydetail/item', 'text!/tmpl/storydetail/view.html'], function(Tubu, Item, template) {
 
   var View = Tubu.view({
     template : _.template(template),
@@ -20,6 +19,7 @@ define([ 'tubu', 'storydetail/item', 'text!/tmpl/storydetail/view.html',
     render : function() {
       var value = this.model.toJSON();
       if (value.story) {
+        value.story.summary = Tubu.format.line(value.story.summary);
         this.$el.html(this.template(_.extend(Tubu.Config, value)));
       } else {
         this.$el.html(_.template(Tubu.Config.loadingTemp)(_.extend(Tubu.Config, value)));

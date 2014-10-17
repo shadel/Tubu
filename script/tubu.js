@@ -1,5 +1,5 @@
-define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'errors/errorsHandle', 'util/string'],
-    function($, _, Backbone, ViewManager, Config, ErrorsHandle, StringUtil) {
+define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'errors/errorsHandle', 'util/string', 'util/HTML.format'],
+    function($, _, Backbone, ViewManager, Config, ErrorsHandle, StringUtil, HTMLFormat) {
 
       var defaultView = {
         clickLink : function(event) {
@@ -14,10 +14,16 @@ define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'e
         show : function() {
           this.render();
           this.$el.show();
+          return true;
         },
 
         hide : function() {
           this.$el.hide();
+          return true;
+        },
+        
+        deleteEvent: function() {
+          this.undelegateEvents();
         }
       };
 
@@ -76,6 +82,9 @@ define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'e
               this.pagingHandle(resp, options);
             }
             if (resp.data) {
+              if (!resp.data.length) {
+                this.trigger('dataEmpty');
+              }
               return resp.data;
             }
             return resp;
@@ -100,6 +109,7 @@ define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'e
         view : createView,
         model : createModel,
         collection : createCollection,
-        StringUtil: StringUtil
+        StringUtil: StringUtil,
+        format: HTMLFormat
       };
     });

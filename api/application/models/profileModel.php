@@ -1,5 +1,5 @@
 <?php
-class ProfileModel extends DataMapper {
+class ProfileModel extends MyMapper {
 
 	var $table = "profile";
 
@@ -25,13 +25,4 @@ class ProfileModel extends DataMapper {
 		$this->db->delete($this->table);
 	}
 	
-	function export() {
-		return  array (
-				'id' => $this->id,
-				'userId' => $this->userId,
-				'email' => $this->email,
-				'avatar' => $this->avatar,
-				'name' => $this->name
-		);
-	}
 }

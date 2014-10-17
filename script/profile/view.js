@@ -11,8 +11,8 @@ define([ 'tubu', 'profile/item', 'text!/tmpl/profile/view.html' ], function(
       this.ownerCollection.on('add', this.addOwnerChapter, this);
       this.ownerCollection.on('reset', this.resetOwnerChapter, this);
 
-      this.followCollection.on('add', this.addfollowChapter, this);
-      this.followCollection.on('reset', this.resetfollowChapter, this);
+      this.followCollection.on('add', this.addFollowChapter, this);
+      this.followCollection.on('reset', this.resetFollowChapter, this);
 
     },
 
@@ -44,6 +44,13 @@ define([ 'tubu', 'profile/item', 'text!/tmpl/profile/view.html' ], function(
 
     refreshStoryOwnerTab : function() {
       this.ownerCollection.fetch();
+    },
+    
+    addFollowChapter : function(model) {
+      this.$('#storyFollow ul').append((Item.initialize({
+        model : model,
+        follow: true
+      }, this.app)).render().$el);
     },
     
     resetFollowChapter : function() {
