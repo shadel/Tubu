@@ -5,20 +5,35 @@ define([], function() {
 		  hot: 'Truyện Hay',
 		  categories: "Thể Loại",
 		  authors: "Tác Giả",
-		  discover: "Khám Phá"
+		  discover: "Khám Phá",
+		  authorMenu: "Thao tác",
+		  addStory: "Thêm Truyện"
 		},
 		common: {
 		  by: 'Đăng bởi',
 		  follower: 'Người theo dõi',
 		  author: 'Tác giả',
-		  summary: 'Tóm tắt'
+		  summary: 'Tóm tắt',
+		  cancel: 'Hủy',
+		  create: 'Tạo',
+		  iagree: 'Tôi đã đọc và đồng ý',
+		  termsOfService: 'Điều khoản sử dụng'
 		},
 		story: {
           status: 'Trạng thái',
           statusValue: ['Đang tiến hành', 'Xong', 'Đã dừng'],
           chapterList: 'Danh sách Chương',
           info: 'Thông tin',
-          summary: 'Tóm tắt'
+          summary: 'Tóm tắt',
+          addNew: "Thêm truyện",
+          addNewForm: "Khung nhập",
+          title: 'Tựa đề',
+          titleHelp: 'Xin hãy nhập tựa đề.',
+          storyTypeName: 'Loại tuyện',
+          storyType: {
+            writen: 'Sáng tác',
+            translate: 'Truyện dịch'
+          }
         },
         profile: {
           storyFollow: 'Đang theo dõi',

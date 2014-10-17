@@ -1,5 +1,5 @@
-define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'errors/errorsHandle', 'util/string', 'util/HTML.format'],
-    function($, _, Backbone, ViewManager, Config, ErrorsHandle, StringUtil, HTMLFormat) {
+define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'errors/errorsHandle', 'util/string', 'util/HTML.format', 'util/validate'],
+    function($, _, Backbone, ViewManager, Config, ErrorsHandle, StringUtil, HTMLFormat, Validate) {
 
       var defaultView = {
         clickLink : function(event) {
@@ -110,6 +110,7 @@ define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'e
         model : createModel,
         collection : createCollection,
         StringUtil: StringUtil,
-        format: HTMLFormat
+        format: HTMLFormat,
+        Validate: Validate
       };
     });

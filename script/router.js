@@ -9,6 +9,7 @@ define([
   var AppRouter = Backbone.Router.extend({
     routes: {
       '': 'main',
+      'control/addstory': 'addStory',
       'story/:id': 'storyDetail',
       'storylist/:key': 'storyList',
       'profile/:id': 'showProfile',

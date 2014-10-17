@@ -1,7 +1,15 @@
-define([ 'tubu', 'storydetail/view' ], function(Tubu, View) {
+define([ 'tubu', 'storydetail/view', 'storydetail/add' ], function(Tubu, View, AddView) {
 
   var Model = Tubu.Backbone.Model.extend({
     urlRoot : '/api/api/stories/detail/id/'
+  });
+  
+  var AddModel = Tubu.Backbone.Model.extend({
+    defaults: {
+      title: "",
+      summary: ""
+    },
+    urlRoot : '/api/api/stories/add/'
   });
 
   var Collection = Tubu.Backbone.Collection.extend({
@@ -34,6 +42,27 @@ define([ 'tubu', 'storydetail/view' ], function(Tubu, View) {
       });
 
       model.fetch();
+    });
+    
+    app_router.on('route:addStory', function() {
+
+      var model = new AddModel();
+
+      Tubu.ViewManager.show({
+        view : AddView,
+        name : 'addStory',
+        selector : 'content',
+        initialize : function(view, element) {
+
+          var view = view.initialize({
+            el : element,
+            model : model
+          }, app_router);
+
+          return view;
+        }
+      });
+
     });
 
   };

@@ -1,7 +1,8 @@
-define(['config/lang', 'text!/tmpl/common/loading.html'], function(Lang, loadingTemp) {
+define(['config/lang', 'config/messages', 'text!/tmpl/common/loading.html'], function(Lang, Messages, loadingTemp) {
 	return {
 		root: '/',
 		lang: Lang,
+		messages: Messages,
 		story: {
 		  status: {
 		    PROCESSING: 0, 
