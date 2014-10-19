@@ -10,6 +10,7 @@ define([
     routes: {
       '': 'main',
       'control/addstory': 'addStory',
+      'control/addchapter/:id': 'addChapter',
       'story/:id': 'storyDetail',
       'storylist/:key': 'storyList',
       'profile/:id': 'showProfile',

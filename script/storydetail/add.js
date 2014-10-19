@@ -5,6 +5,7 @@ define([ 'tubu', 'text!/tmpl/storydetail/add.html' ], function(Tubu, template) {
     template : _.template(template),
     initialize : function(obj, app_router) {
       this.app = app_router;
+      this.model.on('change:id', this.change, this);
     },
 
     events : {
@@ -19,10 +20,20 @@ define([ 'tubu', 'text!/tmpl/storydetail/add.html' ], function(Tubu, template) {
 
     save : function(event) {
       event.preventDefault();
-      if (!Tubu.Validate.run($('form'))) {
+      if (!Tubu.Validate.run(this.$('form'))) {
         return;
       }
       
+      this.model.set({
+        title: this.$('[name="title"]').val(),
+        storyType: this.$('[name="storyType"]').val()
+      });
+      
+      this.model.save();
+      
+    },
+    change: function() {
+      this.app.navigate('/story/' + this.model.get('id'), {trigger: true});
     }
   });
 

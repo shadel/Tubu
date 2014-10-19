@@ -1,0 +1,39 @@
+<section class="vbox">
+	<section class="scrollable padder">
+		<div class="m-b-md">
+			<h3 class="m-b-none"><%= lang.chapter.addNew %></h3>
+		</div>
+
+		<form data-validate="parsley" class="bs-example form-horizontal">
+			<section class="panel panel-default">
+				<header class="panel-heading font-bold"><%=
+					lang.chapter.addNewForm %></header>
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-lg-2 control-label"><%=
+							lang.chapter.title %></label>
+						<div class="col-lg-10">
+							<input type="text" class="form-control error-point"
+								data-required="true"
+								data-error-message-required="<%= messages.chapter.titleRequired %>"
+								placeholder="<%= lang.story.title %>" name="title"> <span
+								class="help-block m-b-none"><%= lang.chapter.titleHelp %></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label"><%=
+							lang.chapter.body %></label>
+						<div class="col-sm-10" id="body"></div>
+					</div>
+
+				</div>
+				<footer class="panel-footer text-right bg-light lter">
+					<button type="submit" class="btn btn-default"><%=
+						lang.common.cancel %></button>
+					<button type="submit" id="save" class="btn btn-success btn-s-xs"><%=
+						lang.common.create %></button>
+				</footer>
+			</section>
+		</form>
+	</section>
+</section>

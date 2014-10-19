@@ -1,5 +1,5 @@
-define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'errors/errorsHandle', 'util/string', 'util/HTML.format', 'util/validate'],
-    function($, _, Backbone, ViewManager, Config, ErrorsHandle, StringUtil, HTMLFormat, Validate) {
+define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'errors/errorsHandle', 'util/string', 'util/HTML.format', 'util/validate', 'util/wysiwyg'],
+    function($, _, Backbone, ViewManager, Config, ErrorsHandle, StringUtil, HTMLFormat, Validate, Wysiwyg) {
 
       var defaultView = {
         clickLink : function(event) {
@@ -24,6 +24,10 @@ define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'e
         
         deleteEvent: function() {
           this.undelegateEvents();
+        },
+        
+        cancel: function() {
+          this.app.history.back();
         }
       };
 
@@ -42,6 +46,7 @@ define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'e
       };
 
       var defaultModel = {
+          errorhandle: ErrorsHandle,
         parse : function(resp, options) {
           if (resp.error) {
             return this.errorHandle(resp, options);
@@ -57,7 +62,14 @@ define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'e
         },
 
         errorHandle : function(resp, options) {
-          ErrorsHandle.execute(resp.errors);
+          if (this.errorhandle && _.isFunction(this.errorhandle.execute)) {
+            this.errorhandle.execute(resp.errors);
+          } else if (_.isFunction(this.errorhandle)) {
+            this.errorhandle(resp.errors);
+          }
+          
+          this.trigger('errors', resp.errors);
+          
           return this.attrs;
         },
 
@@ -111,6 +123,7 @@ define([ 'jquery', 'underscore', 'backbone', 'viewManager', 'config/config' , 'e
         collection : createCollection,
         StringUtil: StringUtil,
         format: HTMLFormat,
-        Validate: Validate
+        Validate: Validate,
+        Wysiwyg: Wysiwyg
       };
     });

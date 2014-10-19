@@ -2,6 +2,9 @@
 define([], function($, _, Backbone, Router){
   
   var line = function(text){
+    if (!text) {
+      return text;
+    }
       if(text.indexOf('\n')==0){
         text = text.replace('\n','');
     }

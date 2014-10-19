@@ -31,4 +31,17 @@ class MyMapper extends DataMapper {
 		
 		return $results;
 	}
+	
+	function save_as_new($object="", $ralted_field="") {
+		$this->db->trans_start();
+		$this->{$this->created_field} = date('Y-m-d H-i-s');
+		
+		$result = parent::save_as_new($object, $ralted_field);
+		$insert_id = $this->db->insert_id();
+		
+		$this->get_by_id($insert_id);
+		
+		$this->db->trans_complete();
+		return $result;
+	}
 }

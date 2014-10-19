@@ -140,16 +140,27 @@ class Stories extends REST_Controller {
 		return new TubuResponse ( $stories->export() );
 	}
 	
-	function story_post() {
-		// $this->some_model->updateUser( $this->get('id') );
-		$message = array (
-				'id' => $this->get ( 'id' ),
-				'name' => $this->post ( 'name' ),
-				'email' => $this->post ( 'email' ),
-				'message' => 'ADDED!' 
-		);
+	function add_post() {
 		
-		$this->response ( $message, 200 ); // 200 being the HTTP response code
+		$data = $this->request->body ;
+		
+		$userId = '1';
+		
+		$storyModel = new StoryModel ();
+		
+		$storyModel->title = $data['title'];
+		$storyModel->storyType = $data['storyType'];
+		$storyModel->createUser = $userId;
+		
+		try {
+			if ($storyModel->save_as_new()) {
+				return new TubuResponse ( $storyModel->export() );
+			}
+		return TubuError::fail();
+		} catch (Exception $ex) {
+			echo $ex->getMessage();
+			return TubuError::fail();
+		}
 	}
 	function story_delete() {
 		// $this->some_model->deletesomething( $this->get('id') );

@@ -1,10 +1,10 @@
 define([ 'tubu', 'storydetail/view', 'storydetail/add' ], function(Tubu, View, AddView) {
 
-  var Model = Tubu.Backbone.Model.extend({
+  var Model = Tubu.model({
     urlRoot : '/api/api/stories/detail/id/'
   });
   
-  var AddModel = Tubu.Backbone.Model.extend({
+  var AddModel = Tubu.model({
     defaults: {
       title: "",
       summary: ""
@@ -12,7 +12,7 @@ define([ 'tubu', 'storydetail/view', 'storydetail/add' ], function(Tubu, View, A
     urlRoot : '/api/api/stories/add/'
   });
 
-  var Collection = Tubu.Backbone.Collection.extend({
+  var Collection = Tubu.collection({
     url : '/api/api/stories/chapter/id/'
   });
 

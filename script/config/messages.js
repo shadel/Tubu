@@ -6,6 +6,11 @@ define([], function() {
 		},
 		story: {
 		  titleRequired: 'Tên truyện không thể trống'
+        },
+        
+        chapter: {
+          titleRequired: 'Tựa đề không thể trống',
+          bodyRequired: 'Nội dung không thể trống'
         }
 	};
 });

@@ -32,9 +32,7 @@
 <body class="container">
 	<section class="vbox">
 		<header id="navigate"
-			class="bg-white-only header header-md navbar navbar-fixed-top-xs">
-			
-		</header>
+			class="bg-white-only header header-md navbar navbar-fixed-top-xs"> </header>
 		<section>
 			<section class="hbox stretch">
 				<!-- .aside -->
@@ -46,9 +44,7 @@
 								data-railOpacity="0.2">
 
 								<!-- nav -->
-								<nav id="menu" class="nav-primary hidden-xs">
-									
-								</nav>
+								<nav id="menu" class="nav-primary hidden-xs"></nav>
 								<!-- / nav -->
 							</div>
 						</section>
@@ -69,6 +65,11 @@
 		src="<?php echo base_url()?>theme/js/slimscroll/jquery.slimscroll.min.js"></script>
 	<script
 		src="<?php echo base_url()?>theme/js/wizard/jquery.bootstrap.wizard.js"></script>
+
+	<!-- wysiwyg -->
+	<script src="<?php echo base_url()?>theme/js/wysiwyg/jquery.hotkeys.js"></script>
+	<script src="<?php echo base_url()?>theme/js/wysiwyg/bootstrap-wysiwyg.js"></script>
+
 	<script src="<?php echo base_url()?>theme/js/app.plugin.js"></script>
 	<script src="<?php echo base_url()?>script/libs/require.js"
 		data-main="/script/main.js?<?php echo time(); ?>"></script>

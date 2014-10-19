@@ -2,6 +2,7 @@
 class StoryModel extends MyMapper {
 
 	var $table = "story";
+	var $created_field = "createTime";
 
 	function selectByFollow($userId, $storyId = null) {
 		

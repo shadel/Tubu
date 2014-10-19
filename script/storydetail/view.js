@@ -14,7 +14,8 @@ define([ 'tubu', 'storydetail/item', 'text!/tmpl/storydetail/view.html'], functi
 
     events : {
       'click #storyChapterTab' : 'refreshStoryOwnerTab',
-      'click #addNewStory' : 'addNewChapter'
+      'click #addNewStory' : 'addNewChapter',
+      'click a': 'clickLink'
     },
     render : function() {
       var value = this.model.toJSON();

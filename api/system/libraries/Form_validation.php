@@ -283,6 +283,7 @@ class CI_Form_validation {
 		// Do we even have any data to process?  Mm?
 		if (count($_POST) == 0)
 		{
+			echo 'not post';
 			return FALSE;
 		}
 
@@ -293,6 +294,7 @@ class CI_Form_validation {
 			// No validation rules?  We're done...
 			if (count($this->_config_rules) == 0)
 			{
+				echo 'not rules';
 				return FALSE;
 			}
 
@@ -311,6 +313,7 @@ class CI_Form_validation {
 			// We're we able to set the rules correctly?
 			if (count($this->_field_data) == 0)
 			{
+				echo ' not data';
 				log_message('debug', "Unable to find validation rules");
 				return FALSE;
 			}
@@ -358,6 +361,7 @@ class CI_Form_validation {
 			return TRUE;
 		}
 
+		var_dump($total_errors);
 		// Validation fails
 		return FALSE;
 	}

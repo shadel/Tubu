@@ -31,6 +31,13 @@ class TubuError {
 	public function getValue() {
 		return $this->_errors;
 	}
+	public static function fail() {
+		$res =  new TubuResponse(new TubuError(array(
+				'type' => 'error.fail'
+		)));
+		$res->setHttpCode(new TubuHttpCode(TubuHttpCode::$HTTP_NOT_FOUND));
+		return $res;
+	}
 	
 	public static function notFound() {
 		$res =  new TubuResponse(new TubuError(array(

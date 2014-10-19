@@ -11,6 +11,9 @@ define([ 'jquery' ], function($) {
       if (!type) {
         type = $(this).prop("tagName");
       }
+      
+      type = type.toLowerCase();
+      
       if (type == "checkbox" || type == "radio") {
         if (!$(this).is(':checked')) {
           addError(this, 'required');
@@ -20,6 +23,13 @@ define([ 'jquery' ], function($) {
         if ($(this).val() == "") {
           addError(this, 'required');
           isValidate = false;
+        }
+      } else if (type == 'div') {
+        if ($(this).attr('contenteditable') == "true") {
+          if (!$.trim($(this).text())) {
+            addError(this, 'required');
+            isValidate = false;
+          }
         }
       }
       
